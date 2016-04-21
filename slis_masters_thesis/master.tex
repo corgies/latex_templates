@@ -1,0 +1,31 @@
+% このファイルを実行することで修士論文本体の出力が可能
+
+\documentclass[a4paper,11pt,onecolumn]{jsarticle}
+\usepackage{docmute}
+\include{setting}
+
+\begin{document}
+
+%% titlepageの設定 %%
+\include{outercover} % 外表紙
+\include{abstract} % 抄録
+\include{innercover} % 内表紙
+
+\restoregeometry % 余白をリセット
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listoftables % 表目次
+\newpage
+\listoffigures % 図目次
+\newpage
+
+%% 本論 %% 
+\pagenumbering{arabic}
+\include{section1} % section1.tex
+\include{section2} % section2.tex
+\include{acknowledgment} % 謝辞
+\include{bibliography_list} % 参考文献リスト
+\include{gyoseki_list} % 発表論文リスト
+\include{appendix} % 付録
+\end{document}

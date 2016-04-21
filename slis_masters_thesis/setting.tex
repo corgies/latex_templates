@@ -1,0 +1,110 @@
+% 図書館情報メディア研究科修士論文用テンプレート:: 設定
+% 作者: jiro atmark slis.tsukuba.ac.jp
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% それぞれの設定に応じて書き換える必要のある箇所
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% setting.tex:21,22,48,49,50,51行目
+% abstract.tex:27,28,38,42,49,50,51,58,59行目
+% bibliography_list.tex:7行目
+% (「*要変更*」でgrepしてヒットした箇所)
+
+\usepackage[dvipdfmx]{graphicx}
+%% PDF目次の文字化け対策 --ここから
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%%PDF目次の文字化け対策 --ここまで
+
+\usepackage[dvipdfmx]{hyperref}
+
+\usepackage{pxjahyper}
+\hypersetup{
+  pdftitle={論文タイトルを入力}, % 変更すること: (例 DOIリンクがウェブ上の学術情報流通に果たす役割: Wikipediaを対象に) *要変更*
+  pdfauthor={著者氏名} % 氏名を入力 *要変更*
+}
+\usepackage[hiresbb]{}
+\usepackage[a4paper,top=35truemm,bottom=35truemm,left=30truemm,right=30truemm]{geometry}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{float}
+\usepackage{ascmac}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{udline}
+\usepackage{fancyhdr} % Header
+\usepackage{longtable} % 複数ページにまたがる表を作成
+\usepackage[table]{xcolor}
+\usepackage{framed}
+
+% 図の枠線まわり
+\fboxsep=0pt
+\fboxrule=0.5pt
+
+% キャプションの上下の余白を狭くする
+\abovecaptionskip=2pt
+\belowcaptionskip=2pt
+
+
+%%================ 題目の定義 =================%%
+\newcommand{\thesisyear}{20YY年M月} % 提出する年、月を設定する *要変更*
+\newcommand{\studentid}{20YYSSSSS} % 学籍番号を設定する *要変更*
+\newcommand{\thesisauthor}{著者氏名} % 氏名を設定 *要変更*
+\newcommand{\thesistitle}{論文タイトル} % 論文タイトルを設定する *要変更* (例: DOIリンクがウェブ上の学術情報流通に果たす \\ 役割: Wikipediaを対象に) 
+\newcommand{\outercoverheader}{図書館情報メディア研究科修士論文}
+\newcommand{\innerunivname}{筑波大学}
+\newcommand{\innerinstname}{図書館情報メディア研究科}
+%%================ 題目の定義 =================%%
+
+%%======== 一部コマンドの拡張 ==============%%
+%% 1. bhline: hlineを太くする =============
+\makeatletter
+\def\bhline{%
+\noalign{\ifnum0=`}\fi\hrule \@height 1.2pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+%%======= 1. bhline ここまで ============%%
+
+%% 2. \urlのフォントを変更する: 地の文とURIのフォントを統一する
+\renewcommand\UrlFont{\rmfamily}
+%%======== 一部コマンドの拡張 ==============%%
+
+%%================ 表記の変更 ==============%%
+% \renewcommand{\refname}{Bibliography} % 参考文献のタイトルを変える場合は設定する。この例では「参考文献」を「Bibliography」にしている。
+
+% 図番号を「章番号.図番号」の形式にする
+\makeatletter
+\renewcommand{\thefigure}{%
+\thesection.\arabic{figure}}
+\@addtoreset{figure}{section} % セクションが変わるたびに値をリセット
+\makeatother
+
+% 表番号を「章番号.図番号」の形式にする
+\makeatletter
+\renewcommand{\thetable}{%
+\thesection.\arabic{table}}
+\@addtoreset{table}{section}
+\makeatother
+%%================ 表記を一部変更 ==============%%
+
+%%================ ヘッダ出力まわり ==============%%
+% 大文字になってしまうのが気持ち悪いので小文字の箇所は小文字で出力
+\makeatletter
+\def\ps@fancy{
+\def\chaptermark##1{\markboth{\ifnum \c@secnumdepth>\z@ \thechapter\hskip 0.5em\relax \fi ##1}{}}
+\def\sectionmark##1{\markright {\ifnum \c@secnumdepth >\@ne \thesection\hskip 0.5em\relax \fi ##1}}
+\ps@@fancy
+\gdef\ps@fancy{\@fancyplainfalse\ps@@fancy}
+\ifdim\headwidth<0sp
+\global\advance\headwidth123456789sp\global\advance\headwidth\textwidth
+\fi
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\rhead{}
+\lhead{\rightmark}
+%% ============== ヘッダ出力まわり ここまで ============%%

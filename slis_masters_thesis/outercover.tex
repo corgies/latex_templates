@@ -1,0 +1,29 @@
+% 外表紙
+% setteing.texの値を参照しているのでこのファイルの書き換えは基本的に不要
+\documentclass[a4paper,11pt,onecolumn]{jsarticle}
+\usepackage{docmute}
+\input{setting}
+
+\begin{document}
+
+%% titlepageの設定 %%
+\begin{titlepage}
+\begin{center}
+
+\fontsize{20.74pt}{0pt}\selectfont \ul{\outercoverheader}
+\vspace{7cm}
+
+\fontsize{20.74pt}{40pt}\selectfont \textbf{ \thesistitle}
+\vspace{8cm}
+
+\fontsize{20.74pt}{0pt}\selectfont \ul{\thesisyear}
+\vspace{0.5cm}
+
+\fontsize{20.74pt}{0pt}\selectfont \ul{\studentid}
+\vspace{0.5cm}
+
+\fontsize{20.74pt}{0pt}\selectfont \ul{\thesisauthor}
+\end{center}
+\end{titlepage}
+
+\end{document}

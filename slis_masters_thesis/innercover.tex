@@ -1,0 +1,30 @@
+% 内表紙
+% setteing.texの値を参照しているのでこのファイルの書き換えは基本的に不要
+
+\documentclass[a4paper,11pt,onecolumn]{jsarticle}
+\usepackage{docmute}
+\input{setting}
+
+\begin{document}
+%% titlepageの設定 %%
+\newgeometry{top=10cm} % 2ページ目の上側の余白を指定する
+\begin{titlepage}
+\begin{center}
+
+\fontsize{20.74pt}{40pt}\selectfont \textbf{\thesistitle}
+\vspace{9cm}
+
+\fontsize{20.74pt}{0pt}\selectfont{\innerunivname}
+\vspace{0.7cm}
+
+\fontsize{20.74pt}{0pt}\selectfont{\innerinstname}
+\vspace{0.7cm}
+
+\fontsize{20.74pt}{0pt}\selectfont{\thesisyear}
+\vspace{0.7cm}
+
+\fontsize{20.74pt}{0pt}\selectfont{\thesisauthor}
+
+\end{center}
+\end{titlepage}
+\end{document}

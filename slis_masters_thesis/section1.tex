@@ -1,0 +1,43 @@
+% 修論全体を出力するためにはmaster.texを使う
+% それぞれのファイル単体でもタイプセット可能(docmuteを使用している)
+% ただし、単体ファイルでの出力では参考文献番号などが正しく表示されない場合あり。
+
+\documentclass[a4paper,11pt,onecolumn]{jsarticle}
+\usepackage{docmute}
+\input{setting}
+
+\begin{document}
+
+\section{はじめに}
+\subsection{研究背景}
+本文......
+
+\noindent 表の参照: 表\ref{table:sample}、図の参照: 図\ref{fig:tsukuba_university_logo}
+
+\begin{table}[h]
+\caption{表サンプル: Googleのサービス}
+\label{table:sample}
+\centering
+\begin{tabular}{ll}
+
+\toprule
+\textgt{名称} & \textgt{概要} \\
+\toprule
+Gmail & メール \\
+Google Books & 書籍 \\
+Google Calendar & カレンダー \\
+Google Scholar & 論文検索 \\
+\midrule
+Google Reader & RSSリーダー(終了) \\
+Google Wave & Chat, SNS(終了) \\  
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\fbox{\includegraphics[width=90mm]{./figs/logo200.pdf}}
+\caption{図のサンプル:筑波大学のロゴ}
+\label{fig:tsukuba_university_logo}
+\end{figure}
+\end{document}

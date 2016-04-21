@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 2016年時点での以下の指定に基いて作成したので必要に応じて書き換える必要あり
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% (1) 余白
+% 上部: 35mm、下部: 35mm、左: 30mm、右: 30mm
+% (2) 文字ポイント数
+% 論文題目: 14 ポイント(中央揃え) 概要本文等: 10.5ポイント
+% (3) その他必須項目 1学籍番号
+% 2氏名(上段日本語、下段英語表記) 3研究指導教員 4副研究指導教員
+% 論文題目と概要本文の間の右側(右に揃える) 概要本文の下段、右側(右に揃える)
+
+\documentclass[a4paper,11pt,onecolumn]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+
+%% PDF目次の文字化け対策
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%%PDF目次の文字化け対策
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{
+  pdftitle={論文タイトル}, % *要変更* DOIリンクがウェブ上の学術情報流通に果たす役割: Wikipediaを対象に
+  pdfauthor={著者氏名} % *要変更* 氏名を入力すること
+}
+\usepackage[a4paper,top=35truemm,bottom=35truemm,left=30truemm,right=30truemm]{geometry}
+
+
+\begin{document}
+\restoregeometry % 余白をリセット
+\thispagestyle{empty}
+
+\begin{center}
+\fontsize{14pt}{7mm}\selectfont{\textgt{\textbf{論文題目}}} % *要変更*
+\vspace{0mm}
+\\ 
+\fontsize{14pt}{7mm}\selectfont{\textbf{Title in English
+}} % *要変更*
+\end{center}
+
+\vspace{2mm}
+
+% 右寄せ
+\begin{flushright}
+学籍番号: \hspace{6.2mm} 20YYSSSSS \\ % 学籍番号 *要変更*
+氏名: \hspace{6mm} 氏名(日本語) \\ % 氏名 *要変更*
+Name in English % *要変更*
+\end{flushright}
+
+抄録本文をここに入力する.......
+
+% 右寄せ
+\begin{flushright}
+研究指導教員:  \hspace{9.2mm} 研究指導教員氏名 \\ % *要変更*
+副研究指導教員:  \hspace{6mm} 副研究指導教員氏名 % *要変更*
+\end{flushright}
+
+\end{document}
