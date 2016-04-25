@@ -1,0 +1,104 @@
+\documentclass[a4paper,10pt,twocolumn]{jarticle} % ,twocolumn
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{color}
+\usepackage[hiresbb]{}
+\usepackage[top=25truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry} % 用紙余白の設定
+\usepackage{cite}
+\usepackage{url}
+\usepackage{float}
+\usepackage{ascmac}
+\usepackage{booktabs}
+\usepackage{caption}
+
+%% PDF目次の文字化け対策 --ここから
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%%PDF目次の文字化け対策 --ここまで
+
+%% PDFファイルの情報記述 --ここから
+\usepackage{pxjahyper}
+\hypersetup{
+  pdftitle={三田図書館・情報学会研究大会予稿用サンプルファイル}, %タイトル
+  pdfauthor={吉川次郎} %著者
+}
+%% PDFファイルの情報記述 --ここまで
+
+% キャプションの上下の余白を狭める
+\abovecaptionskip=2pt
+\belowcaptionskip=2pt
+
+%% \urlのフォントを変更する --ここから
+\renewcommand\UrlFont{\rmfamily}
+%% \urlのフォントを変更する --ここまで
+
+%\renewcommand{\refname}{注・参考文献} % 「参考文献」の表記を変更する場合
+
+\pagestyle{empty} % すべてのページ番号を非表示にする
+
+\begin{document}
+\title{\fontsize{14.0pt}{0pt}\selectfont \textgt{\textbf{論文タイトル}}}
+\author{吉川次郎(筑波大学大学院) jiro@slis.tsukuba.ac.jp \\
+著者2(所属2) author2@hogehoge \\ }
+\date{}
+\maketitle
+\thispagestyle{empty} % 1ページ目のページ番号を非表示にする
+
+\section{はじめに}
+本テンプレートは、「三田図書館・情報学会」~\cite{mslis_HP}の研究大会予稿用の\textcolor{blue}{非公式}LaTeX Templateです。作者は、筑波大学大学院図書館情報メディア研究科の吉川次郎です。
+2015年度研究大会にて、本テンプレートを用いて発表を行いました~\cite{mslis_kikkawa2015}。サンプルファイルとしてご参照ください。
+最新版のファイルは、GitHub上で公開しています~\cite{corgies_thesis_templates}。
+
+\section{対象・方法}
+\subsection{分析対象}
+表サンプルを表\ref{table:sample}に示す。
+
+\begin{table}[h]
+\caption{表サンプル: Googleのサービス}
+\label{table:sample}
+
+\begin{tabular}{ll}
+
+\toprule
+\textgt{名称} & \textgt{概要} \\
+\toprule
+Gmail & メール \\
+Google Books & 書籍 \\
+Google Calendar & カレンダー \\
+Google Scholar & 論文検索 \\
+\midrule
+Google Reader & RSSリーダー(終了) \\
+Google Wave & Chat, SNS(終了) \\  
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{分析方法}
+......
+
+\section{分析結果}
+......
+
+\section{考察}
+......
+
+\section{おわりに}
+......
+
+\begin{thebibliography}{99}
+\bibitem{mslis_HP}
+\small 三田図書館・情報学会. ``三田図書館・情報学会：Mita Society for Library and Information Science''. 三田図書館・情報学会：Mita Society for Library and Information Science. \url{http://www.mslis.jp/}, (参照 2016-04-01).
+
+\bibitem{mslis_kikkawa2015}
+\small 吉川次郎, 高久雅生, 武田英明, 逸村裕. ``アクセスログに基づくDOIリンクの参照状況の分析: JaLC DOIを対象に''. 三田図書館・情報学会 2015年度研究大会. 東京, 2015-11-14. 2015年度三田図書館・情報学会研究大会発表論文集. 2015, p.17-20. \url{http://www.mslis.jp/am2015yoko/05_kikkawa_rev.pdf}, (参照 2016-04-01).
+
+\bibitem{corgies_thesis_templates}
+\small 吉川次郎. ``corgies/thesis\_templates''. GitHub. \url{https://github.com/corgies/thesis_templates/}, (参照 2016-04-01).
+
+\end{thebibliography}
+
+\end{document}
