@@ -1,0 +1,210 @@
+\documentclass[a4paper,11pt,onecolumn]{jarticle}
+
+% マージンの指定: 上下端25mm 程度 左右25mm 
+\usepackage[top=25truemm,bottom=25truemm,left=25truemm,right=25truemm]{geometry}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+
+%% PDF目次の文字化け対策
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%%PDF目次の文字化け対策
+
+\usepackage[dvipdfmx]{hyperref}
+
+% ファイル本体の情報記述
+\usepackage{pxjahyper}
+\hypersetup{
+pdftitle={タイトルを入力すること}, % タイトルを入力すること
+pdfauthor={著者名を入力すること} % 著者を入力すること
+}
+
+\usepackage[hiresbb]{}
+\usepackage[dvipdfmx]{color} % 訂正が必要な箇所が分かるように色付け
+\usepackage{cite}
+\usepackage{url}
+\usepackage{float}
+\usepackage{ascmac}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{secdot}
+\usepackage[table]{xcolor}
+
+% キャプションの上下の余白を狭くする
+\abovecaptionskip=1pt
+\belowcaptionskip=1pt
+
+\setlength\intextsep{7pt}
+\setlength\textfloatsep{7pt}
+
+% 一行の文字数を設定するための記述
+% 実際の値は、\begin{document}直下の2行で指定
+\makeatletter
+\def\mojiparline#1{
+\newcounter{mpl}
+\setcounter{mpl}{#1}
+\@tempdima=\linewidth
+\advance\@tempdima by-\value{mpl}zw
+\addtocounter{mpl}{-1}
+\divide\@tempdima by \value{mpl}
+\advance\kanjiskip by\@tempdima
+\advance\parindent by\@tempdima
+}
+\makeatother
+\def\linesparpage#1{
+\baselineskip=\textheight
+\divide\baselineskip by #1
+}
+
+%参考文献の行間を詰める
+\makeatletter
+\renewenvironment{thebibliography}[1]
+{\section*{\refname\@mkboth{\refname}{\refname}}%
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+       {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+        \advance\leftmargin\labelsep
+ \setlength\itemsep{-0.5zh}% ここの数値を調整(行間のつまり具合)
+ \setlength\baselineskip{10pt}% ここの数値を調整(追加)(文字の大きさ)
+        \@openbib@code
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty\clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m}
+ {\def\@noitemerr
+   {\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist}
+\makeatother
+
+%\renewcommand{\refname}{注・参考文献} % 参考文献のタイトルを変える場合に使用
+
+\pagestyle{empty} % ページ番号をすべて非表示にする
+
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}%
+{1\Cvs}%%% 見出しの上の空白は1行
+{0.2\Cvs} %%% 見出しの下の余白は狭めで
+%{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+{\reset@font\noindent\normalsize\bfseries\underline}}
+\makeatother
+
+\makeatletter
+\def\subsection{\@startsection{subsection}{1}{\z@}%
+{0.5\Cvs}%%% 見出しの上の空白は1行
+{0.1\Cvs} %%% 見出しの下の余白は狭めで
+%{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+{\reset@font\normalsize}}
+\makeatother
+
+\makeatletter
+\def\subsubsection{\@startsection{subsubsection}{1}{\z@}%
+{0\Cvs}%%% 見出しの上の空白は1行
+{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+{\reset@font\normalsize}}
+\makeatother
+
+%%======== ここから 一部コマンドの拡張 ==============%%
+%% 1. bhline: hlineを太くする =============
+\makeatletter
+\def\bhline{%
+\noalign{\ifnum0=`}\fi\hrule \@height 1.2pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+%%======= 1. bhline ここまで ============%%
+
+%% 2. \url{}のフォントをいじる
+\renewcommand\UrlFont{\rmfamily}
+%%======= 2. url ここまで ============%%
+\newcommand\fnurl[2]{%
+\href{#2}{#1}\footnote{\url{#2}}%
+}
+%%======== 一部コマンドの拡張 ここまで ==============%%
+
+\begin{document}
+
+% 一行あたり文字数: 42文字
+\mojiparline{42}
+% 1ページあたり行数: 45行
+\linesparpage{45}
+
+
+%%%% ::::タイトル等の情報::::
+\begin{center}
+\fontsize{14.0pt}{0pt}\selectfont \textgt{\textbf{題目(和文)を書いて下さい：原稿執筆に関するお願い}} \\ 
+\vspace{0.3cm}
+\fontsize{11.0pt}{0pt}\selectfont 題目(英文)を書いて下さい：How to write your paper \\[4ex]
+
+\underline{発表者の和文氏名}を記入する。複数の場合は、連記 \\[1ex]
+\underline{発表者の英文氏名}を和文氏名と対応付けて記入する \\[1ex]
+\underline{発表者所属の和文名称}を、氏名に対応づけて記入する \\[1ex]
+\underline{発表者所属の英文名称}を、氏名に対応づけて記入する \\[1ex]
+\end{center}
+\thispagestyle{empty} % 1ページ目のページ番号を消去する via. http://at-aka.blogspot.jp/2006/09/latex.html
+% \tableofcontents
+
+%%% ::::あらまし::::
+あらまし： この部分には、ご発表内容の概要を読者に伝えられるように、そのあらましを \\
+\hspace{2.2cm} 200字程度で書いてください。この例の場合、1行あたり37字ですので、約5 \\
+\hspace{2.2cm} 行が目安となります。 \\ 
+\hspace{2.2cm} この原稿は、発表申し込みをされた方に対する「発表資料原稿のご執筆依頼」 \\
+\hspace{2.2cm} と「原稿の書き方に関するお願い」を兼ねています。 \\ 
+
+キーワード：情報メディア学会、研究会、執筆要領、提出方法、ファイル、連絡先
+
+\section{はじめに}
+本ファイルは、情報メディア学会\footnote{\url{http://www.jsims.jp/}}研究大会の予稿用スタイルファイルです。筑波大学大学院図書館情報メディア研究科の吉川次郎が作成し、Github上(\url{https://github.com/corgies/thesis_templates})で公開しています。
+
+本ファイルを用いて吉川は第15回研究大会\footnote{\url{http://www.jsims.jp/kenkyu-taikai/yokoku/15.html}}での予稿論文の投稿を行いましたが、あくまで吉川が個人的に作成したものであり、情報メディア学会公認のものでは一切ありません。また、予稿の書式指定に変更があった場合、変更が必要となる可能性があります。
+したがって、本ファイルの使用にあたっては、使用者の自己責任で行うとともに、疑問点や問題点等のご指摘は情報メディア学会の事務局等ではなく、作者までご連絡いただきますようにお願い申し上げます。
+
+同様のスタイルファイルとして、天野晃氏によって作成・公開されたもの\footnote{\url{https://github.com/kouamano/latex-jsims/tree/master/StyleFiles/JSIMS}}が存在します。
+
+\section{表のサンプル}
+
+表のサンプルを表\ref{table:sample_table}に示す。
+
+\begin{table*}[ht]
+\caption{サンプル}
+\centering
+\label{table:sample_table}
+\begin{tabular}{rll}
+
+\bhline
+
+\textbf{\small No.} & \textgt{\small コードネーム} & \textgt{\small 読み} \\
+\bhline
+\small 0 & Cheetah & チーター \\
+\rowcolor[HTML]{99DFFF}\small 1 & Puma & ピューマ \\
+\small 2 & Jaguar & ジャガー \\
+\rowcolor[HTML]{99DFFF}\small 3 & Panther & パンサー \\
+\hline
+\rowcolor[HTML]{FF9999} \small 4 & Tiger & タイガー \\
+\small 5 & Leopard & レパード \\
+% \rowcolor[HTML]{FF9999} \small 6 & Snow Leopard & スノー レパード \\
+% \small 7 & Lion & ライオン \\
+% \rowcolor[HTML]{FF9999} \small 8 & Mountain Lion & マウンテン ライオン \\
+% \small 9 & Mavericks & マーベリックス \\
+% \hline
+% \rowcolor[HTML]{FF9999} \small 10 & Yosemite & ヨセミテ \\
+% \small 11 & El Capitan & エル キャピタン \\
+
+\bhline
+\end{tabular}
+\end{table*}
+
+
+\begin{thebibliography}{99}
+\fontsize{10pt}{0pt}\selectfont
+\bibitem{item1} Kikkawa, Jiro. ``corgies/thesis\_templates: LaTeX templates for thesis''. Github. 2016-06-04. \\ \url{https://github.com/corgies/thesis_templates}, (参照 2016-06-04).
+\end{thebibliography}
+
+\end{document}
