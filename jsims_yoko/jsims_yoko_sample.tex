@@ -1,0 +1,206 @@
+\documentclass[10pt, a4paper,twocolumn]{jarticle}
+
+% 余白の設定
+\usepackage[top=25truemm,bottom=25truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+
+%% PDF目次の文字化け対策
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%%PDF目次の文字化け対策
+
+\usepackage[dvipdfmx]{hyperref}
+
+% メタデータ記述
+\usepackage{pxjahyper}
+\hypersetup{
+pdftitle={タイトルを入力すること},
+pdfauthor={著者名を入力すること}
+}
+
+\usepackage{multicol}
+\usepackage[hiresbb]{}
+\usepackage[dvipdfmx]{color}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{float}
+\usepackage{ascmac}
+\usepackage{booktabs}
+% \usepackage{caption}
+\usepackage{secdot}
+\usepackage[table]{xcolor}
+
+\usepackage{nonfloat}
+
+% Headerまわり
+\usepackage{fancyhdr}
+\pagestyle{empty}
+
+% キャプション(上下のテキスト?)の上下の余白
+\abovecaptionskip=3pt
+\belowcaptionskip=3pt
+
+
+% 1行あたりの文字数、1ページの行数を指定
+\makeatletter
+\def\mojiparline#1{
+\newcounter{mpl}
+\setcounter{mpl}{#1}
+\@tempdima=\linewidth
+\advance\@tempdima by-\value{mpl}zw
+\addtocounter{mpl}{-1}
+\divide\@tempdima by \value{mpl}
+\advance\kanjiskip by\@tempdima
+\advance\parindent by\@tempdima
+}
+\makeatother
+\def\linesparpage#1{
+\baselineskip=\textheight
+\divide\baselineskip by #1
+}
+
+
+%% 参考文献の行間を詰めたい場合は以下のコメントアウトを外す
+% \makeatletter
+% \renewenvironment{thebibliography}[1]
+% {\section*{\refname\@mkboth{\refname}{\refname}}%
+%   \list{\@biblabel{\@arabic\c@enumiv}}%
+%        {\settowidth\labelwidth{\@biblabel{#1}}%
+%         \leftmargin\labelwidth
+%         \advance\leftmargin\labelsep
+%  \setlength\itemsep{-0.1zh}%←ここの数値を調整(行間のつまり具合)
+%  \setlength\baselineskip{10pt}%←ここの数値を調整（追加）(文字の大きさ)
+%         \@openbib@code
+%         \usecounter{enumiv}%
+%         \let\p@enumiv\@empty
+%         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%   \sloppy
+%   \clubpenalty4000
+%   \@clubpenalty\clubpenalty
+%   \widowpenalty4000%
+%   \sfcode`\.\@m}
+%  {\def\@noitemerr
+%    {\@latex@warning{Empty `thebibliography' environment}}%
+%   \endlist}
+% \makeatother
+
+%\renewcommand{\refname}{注・参考文献} % 参考文献のタイトルを変える場合
+
+%% \maketitleの余白を調整
+
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}%
+{1\Cvs}%%% 見出しの上の空白は1行
+{0.2\Cvs} %%% 見出しの下の余白は狭めで
+%{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+%{\reset@font\noindent\normalsize\bfseries\underline}}
+{\reset@font\noindent\normalsize\bfseries}}
+\makeatother
+
+\makeatletter
+\def\subsection{\@startsection{subsection}{1}{\z@}%
+{0.5\Cvs}%%% 見出しの上の空白は1行
+{0.1\Cvs} %%% 見出しの下の余白は狭めで
+%{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+{\reset@font\normalsize\bfseries}}
+\makeatother
+
+\makeatletter
+\def\subsubsection{\@startsection{subsubsection}{1}{\z@}%
+{0\Cvs}%%% 見出しの上の空白は1行
+{1sp minus 2sp}%%% 見出しの下の空白はほぼゼロ
+{\reset@font\normalsize}}
+\makeatother
+
+%%======== 一部コマンドの拡張 ==============%%
+%% 1. bhline: hlineを太くする =============
+\makeatletter
+\def\bhline{%
+\noalign{\ifnum0=`}\fi\hrule \@height 1.2pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+%%======= 1. bhline ここまで ============%%
+
+%% 2. \url{}のフォントをいじる
+\renewcommand\UrlFont{\rmfamily}
+%%======= 2. url ここまで ============%%
+\newcommand\fnurl[2]{%
+\href{#2}{#1}\footnote{\url{#2}}%
+}
+%%======== 一部コマンドの拡張 ==============%%
+
+
+\begin{document}
+
+\mojiparline{22} % 一行あたり文字数の指定
+\linesparpage{40} % 1ページあたり行数の指定
+
+\twocolumn[{%
+【予稿集】
+\vspace{0.5cm}
+\begin{center}
+\fontsize{12.0pt}{0pt}\selectfont{\textbf{\textgt{題目(和文)}}} \\
+\vspace{0.5cm} % Areasかもしれない?
+
+吉川 次郎$^*$ \\ [1ex]
+$^*$筑波大学大学院図書館情報メディア研究科 \\ [1ex]
+$^*$jiro@slis.tsukuba.ac.jp \\ [1ex]
+\end{center}
+\vspace{0.2cm}
+% あらましを記述する
+本研究は、...................
+\vspace{0.2cm}
+
+\begin{center}
+\fontsize{12.0pt}{0pt}\selectfont{\textbf{Title in English}} \\ [1ex]
+\vspace{0.5cm} % Areasかもしれない?
+Jiro KIKKAWA$^*$ \\ [1ex]
+$^*$Graduate School of Library, Information and Media Studies, University of Tsukuba \\ [1ex]
+\vspace{0.5cm}
+\end{center}
+}]
+
+\section{はじめに}
+本ファイルは、情報メディア学会\footnote{\url{http://www.jsims.jp/}}研究大会予稿用の \LaTeX スタイルファイルです。筑波大学大学院図書館情報メディア研究科の吉川次郎が作成し、Github上(\url{https://github.com/corgies/thesis_templates})で公開しています。
+
+作者は、本ファイルを用いて第17回研究大会\footnote{\url{http://www.jsims.jp/kenkyu-taikai/yokoku/17.html}, \url{http://www.jsims.jp/kenkyu-taikai/17.html}}での予稿論文の作成および投稿を行いましたが、あくまで個人的に作成したものであり、情報メディア学会公認のものではありません。また、予稿の書式等に変更があった場合、内容の変更が必要となったり、役に立たなくなったりする場合がありますので、併せてご注意ください。
+
+したがって、本ファイルの使用にあたっては、使用者の自己責任で行うとともに、疑問点や問題点等のご指摘は情報メディア学会の事務局等ではなく、作者までご連絡いただきますようにお願い申し上げます。
+
+同様のスタイルファイルとして、天野晃氏によって作成・公開されたもの\footnote{\url{https://github.com/kouamano/latex-jsims/tree/master/StyleFiles/JSIMS}}が存在します。
+
+\section{表のサンプル}
+
+表のサンプルを表\ref{table:sample_table}に示す。
+
+\begin{table}[ht]
+\caption{サンプル}
+\centering
+\label{table:sample_table}
+\begin{tabular}{rll}
+
+\bhline
+\textbf{\small No.} & \textgt{\small コードネーム} & \textgt{\small 読み} \\
+\bhline
+\small 0 & Cheetah & チーター \\
+\rowcolor[HTML]{99DFFF}\small 1 & Puma & ピューマ \\
+\small 2 & Jaguar & ジャガー \\
+\rowcolor[HTML]{99DFFF}\small 3 & Panther & パンサー \\
+\rowcolor[HTML]{FF9999} \small 4 & Tiger & タイガー \\
+\small 5 & Leopard & レパード \\
+\bhline
+\end{tabular}
+\end{table}
+
+
+\begin{thebibliography}{99}
+\fontsize{10pt}{0pt}\selectfont
+\bibitem{item1} Kikkawa, Jiro. ``corgies/thesis\_templates: LaTeX templates for thesis''. Github. 2016-06-04. \\ \url{https://github.com/corgies/thesis_templates}, (参照 2016-06-04).
+\end{thebibliography}
+
+\end{document}
