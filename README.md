@@ -4,7 +4,7 @@ my thesis templates
 私製のLaTeX用テンプレートを公開しています(2016年4月~)。これまでに作成したもの:
 
 * 三田図書館・情報学会(mslis) 研究大会予稿用: **./mslis_yoko/**
-* 筑波大学大学院図書館情報メディア研究科 修士論文用 **./slis_masters_thesis/**
+* 筑波大学大学院図書館情報メディア研究科 修士論文用 **./slis_masters_thesis/** -> **OBSOLETE (2018-12-22)** 公式Templateができたようなので、[教務関係](http://www.slis.tsukuba.ac.jp/grad/students/kyoumu/ "教務関係 | 筑波大学 図書館情報メディア系／大学院図書館情報メディア研究科")のページから入手して使うのが無難でしょう
 * 情報メディア学会(jsims) 研究大会予稿用: **./jsims_yoko/**
 
 注意事項
