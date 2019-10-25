@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper,twocolumn,twoside]{jsik}
+\usepackage[dvips]{graphicx}
+
+% bhline: hlineを太くする
+\makeatletter
+\def\bhline{%
+%\noalign{\ifnum0=`}\fi\hrule \@height 1.2pt \futurelet
+\noalign{\ifnum0=`}\fi\hrule \@height 0.8pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+
+\newcommand{\TitleJP}{論文題目}
+\newcommand{\TitleEN}{Title}
+
+% メタデータ記述
+\usepackage{pxjahyper}
+\hypersetup{
+pdftitle={\TitleJP},
+pdfauthor={}
+}
+
+\begin{document}
+
+% ページ番号表示の設定．投稿時には有効にすること
+% \pagestyle{empty}
+% \thispagestyle{empty}
+
+
+\articletype{研究論文}
+% 最終更新日時を表示させたい場合は以下を使う
+% \articletype{研究論文 (\textcolor{orange}{最終更新: \the\year 年\the\month 月\the\day 日\the\hour 時 \the\minute 分})}
+
+\jtitle{\TitleJP}
+\etitle{\TitleEN}
+
+\jauthor{吉川 次郎$^{\dag*}$}
+\eauthor{Jiro KIKKAWA$^{\dag*}$}
+\affiliation{
+$^{\dag}$ 筑波大学大学院 図書館情報メディア研究科 \\
+Graduate School of Library, Information and Media Studies, University of Tsukuba \\
+〒305-8550 茨城県つくば市春日1-2 \\
+E-mail: jiro@slis.tsukuba.ac.jp \\
+$^{*}$ 連絡先著者 Corresponding Author
+}
+
+\jabstract{アブストラクト}
+
+\eabstract{Abstract}
+
+\keywords{
+Wikipedia，Digital Object Identifier (DOI)，学術情報流通 \\
+Keywords: \hspace{2.0mm} Wikipedia, \ Digital Object Identifier (DOI), \ Scholarly Communication
+}
+
+\maketitle
+
+\subfile{sec1_Introduction}
+% \subfile{sec2_Related_Works}
+% \subfile{sec3_Methods}
+% \subfile{sec4_Results}
+% \subfile{sec5_Discussion}
+% \subfile{sec6_Conclusion}
+
+\bibliographystyle{jsik}
+\bibliography{Reference.bib}
+
+\end{document}
